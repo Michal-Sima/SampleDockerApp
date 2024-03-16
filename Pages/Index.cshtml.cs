@@ -22,7 +22,7 @@ namespace SampleDockerApp.Pages
             Users = await _context.User.ToListAsync();
         }
 
-        public async Task<IActionResult> OnPostDeleteAsync()
+        public async Task<IActionResult> OnPostAsync()
         {
             var user = await _context.User.FindAsync(UserId);
 
