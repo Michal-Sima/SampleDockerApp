@@ -15,15 +15,16 @@ namespace SampleDockerApp.Pages
         }
 
         public IList<User> Users { get; set; }
-
+        [BindProperty]
+        public int UserId { get; set; }
         public async Task OnGetAsync()
         {
             Users = await _context.User.ToListAsync();
         }
 
-        public async Task<IActionResult> OnPostDeleteAsync(int userId)
+        public async Task<IActionResult> OnPostDeleteAsync()
         {
-            var user = await _context.User.FindAsync(userId);
+            var user = await _context.User.FindAsync(UserId);
 
             if (user == null)
             {
