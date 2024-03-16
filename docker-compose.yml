@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  webapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5555:8080"
+    depends_on:
+      - database
+    environment:
+      - CONNECTION_STRING=Server=database;Database=userdatabase;User=sa;Password=Your_password123!;MultipleActiveResultSets=true
+
+  database:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    ports:
+      - "1433:1433"
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Your_password123!
