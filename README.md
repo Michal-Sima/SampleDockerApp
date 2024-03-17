@@ -5,3 +5,5 @@ Zoznam komponentov: 1. komponent: MSSQL Server, ktory obsahuje databazu pre nasu
 Zip archiv obsahuje 2 docker-compose.yml subory. Ten ktory sa spusta pomocou ".\start-app.ps1" vyuziva docker image mojej webovej aplikacie ktory je nahrany v mojom repozitari na Docker Hub kde sa nahrava pomocou Github Action z repozitara https://github.com/Michal-Sima/SampleDockerApp. Kedze na niektorych systemoch je obcas problem zbuildovat .NET Core aplikaciu v dockeri vid tento bug -> https://github.com/dotnet/dotnet-docker/issues/4503.
 
 Subor docker-compose.yml ktory sa nachadza v roote repozitara builduje docker image pomocou Dockerfile suboru opat v roote repozitara.
+
+Na zmazanie tych containerov staci vojst do zlozky docker-compose-only-images a zavolat "docker compose down".
