@@ -1,0 +1,1 @@
+sudo docker-compose -f "./docker-compose-only-images/docker-compose.yml" stop
