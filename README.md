@@ -1,10 +1,10 @@
 Pre spustenie webovej sample aplikacie na manazovanie uzivatelov je potrebne v systeme Windows otvorit Powershell terminal v nom sa donavigovat do rozbaleneho zip archivu, potom staci spustit prikaz ".\start-app.ps1" a na pozastavenie docker containerov prikaz "end-app.ps1". Na pripojenie k webovej aplikacii je potrebne v browseri otvorit URL -> http://localhost:5555
 
 Pre spustenie aplikacie na Linux Ubuntu staci otvorit terminal, donavigovat sa do rozbaleneho zip archivu a spustit start-app.sh a na pozastavenie end-app.sh. Na pripojenie k webovej aplikacii je potrebne v browseri otvorit URL -> http://localhost:5555
-Presnejsi navod na spustenie na Linuxe 
+Presnejsi navod na spustenie na Linuxe:
 git clone https://github.com/Michal-Sima/SampleDockerApp.git
 cd SampleDockerApp
-chmod +x start-app.sh 
+chmod +x start-app.sh
 chmod +x end-app.sh
 sudo ./start-app.sh
 
