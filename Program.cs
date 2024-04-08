@@ -22,14 +22,20 @@ namespace SampleDockerApp
             {
                 using (var dbContext = serviceScope.ServiceProvider.GetRequiredService<ApplicationDBContext>())
                 {
-                    bool canConnect = dbContext.Database.CanConnect();
+                    bool canConnect = false;
                     while (!canConnect)
                     {
-                        Console.WriteLine("Waiting for DB");
-                        Task.Delay(5000).Wait();
-                        canConnect = dbContext.Database.CanConnect();
-                    }
-                    dbContext.Database.EnsureCreated();                
+                        try
+                        {
+                            dbContext.Database.EnsureCreated();
+                            canConnect = true;
+                        }
+                        catch
+                        {
+                            Console.WriteLine("Waiting for DB");
+                            Task.Delay(5000).Wait();
+                        }
+                    }               
                 }            
             }
 
