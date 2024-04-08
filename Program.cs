@@ -17,7 +17,7 @@ namespace SampleDockerApp
             });
             var app = builder.Build();
 
-            Task.Delay(10000);
+            Task.Delay(15000).Wait();
             using (var serviceScope = app.Services.CreateScope())
             {
                 using (var dbContext = serviceScope.ServiceProvider.GetRequiredService<ApplicationDBContext>())
