@@ -11,10 +11,13 @@ namespace SampleDockerApp
             // Add services to the container.
             builder.Services.AddRazorPages();
             var connectionString = builder.Configuration["CONNECTION_STRING"];
-            builder.Services.AddDbContext<ApplicationDBContext>(options => 
-            options.UseSqlServer(connectionString));
+            builder.Services.AddDbContext<ApplicationDBContext>(options =>
+            {
+                options.UseSqlServer(connectionString, o => o.EnableRetryOnFailure());
+            });
             var app = builder.Build();
 
+            Task.Delay(10000);
             using (var serviceScope = app.Services.CreateScope())
             {
                 using (var dbContext = serviceScope.ServiceProvider.GetRequiredService<ApplicationDBContext>())
