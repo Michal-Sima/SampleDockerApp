@@ -17,11 +17,18 @@ namespace SampleDockerApp
             });
             var app = builder.Build();
 
-            Task.Delay(15000).Wait();
+            
             using (var serviceScope = app.Services.CreateScope())
             {
                 using (var dbContext = serviceScope.ServiceProvider.GetRequiredService<ApplicationDBContext>())
                 {
+                    bool canConnect = dbContext.Database.CanConnect();
+                    while (!canConnect)
+                    {
+                        Console.WriteLine("Waiting for DB");
+                        Task.Delay(5000).Wait();
+                        canConnect = dbContext.Database.CanConnect();
+                    }
                     dbContext.Database.EnsureCreated();                
                 }            
             }
